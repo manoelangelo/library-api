@@ -1,0 +1,25 @@
+server:
+  port: ${SERVER_PORT:8080}
+
+spring:
+  application:
+    name: library-api
+  jackson:
+    default-property-inclusion: non_null
+  r2dbc:
+    url: r2dbc:postgresql://${DATABASE_HOST:localhost}:${DATABASE_PORT:5432}/${DATABASE_NAME:wallet-api}
+    username: ${DATABASE_USERNAME:postgres}
+    password: ${DATABASE_PASSWORD:12345}
+  datasource:
+    driver-class-name: org.postgresql.Driver
+
+logging:
+  level:
+    root: ${LOGGING_LEVEL_ROOT:INFO}
+    org.springframework: ${LOGGING_LEVEL_SPRING:INFO}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
